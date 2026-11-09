@@ -1,0 +1,295 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+    Painel Administrativo | Voz Cidadã
+{% endblock %}
+
+
+{% block content %}
+
+<section class="pagina">
+
+    <div class="container">
+
+
+        <div class="pagina-cabecalho">
+
+            <div>
+
+                <span>
+                    ÁREA ADMINISTRATIVA
+                </span>
+
+                <h1>
+                    Painel de controle
+                </h1>
+
+                <p>
+                    Gerencie as manifestações registradas pela comunidade.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ESTATÍSTICAS -->
+
+        <div class="admin-estatisticas">
+
+
+            <div class="admin-card">
+
+                <span>
+                    Total
+                </span>
+
+                <strong>
+                    {{ total_manifestacoes }}
+                </strong>
+
+            </div>
+
+
+            <div class="admin-card">
+
+                <span>
+                    Pendentes
+                </span>
+
+                <strong>
+                    {{ total_pendentes }}
+                </strong>
+
+            </div>
+
+
+            <div class="admin-card">
+
+                <span>
+                    Em andamento
+                </span>
+
+                <strong>
+                    {{ total_andamento }}
+                </strong>
+
+            </div>
+
+
+            <div class="admin-card">
+
+                <span>
+                    Resolvidas
+                </span>
+
+                <strong>
+                    {{ total_resolvidas }}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- TABELA -->
+
+        <div class="tabela-container">
+
+            <table class="tabela">
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Manifestação
+                        </th>
+
+                        <th>
+                            Categoria
+                        </th>
+
+                        <th>
+                            Local
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Alterar status
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for manifestacao in manifestacoes %}
+
+                        <tr>
+
+                            <td>
+                                #{{ manifestacao.id }}
+                            </td>
+
+
+                            <td>
+
+                                <strong>
+                                    {{ manifestacao.titulo }}
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                {{ manifestacao.categoria.nome }}
+
+                            </td>
+
+
+                            <td>
+
+                                {{ manifestacao.localizacao }}
+
+                            </td>
+
+
+                            <td>
+
+                                <span class="status status-{{ manifestacao.status|lower|replace(' ', '-') }}">
+
+                                    {{ manifestacao.status }}
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <form
+                                    method="POST"
+                                    action="{{ url_for('alterar_status', id=manifestacao.id) }}"
+                                    class="form-status"
+                                >
+
+                                    <select name="status">
+
+                                        <option
+                                            value="Pendente"
+                                            {% if manifestacao.status == "Pendente" %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            Pendente
+                                        </option>
+
+
+                                        <option
+                                            value="Em análise"
+                                            {% if manifestacao.status == "Em análise" %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            Em análise
+                                        </option>
+
+
+                                        <option
+                                            value="Em andamento"
+                                            {% if manifestacao.status == "Em andamento" %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            Em andamento
+                                        </option>
+
+
+                                        <option
+                                            value="Resolvido"
+                                            {% if manifestacao.status == "Resolvido" %}
+                                                selected
+                                            {% endif %}
+                                        >
+                                            Resolvido
+                                        </option>
+
+                                    </select>
+
+
+                                    <button
+                                        type="submit"
+                                        class="botao botao-pequeno">
+
+                                        Atualizar
+
+                                    </button>
+
+                                </form>
+
+                            </td>
+
+
+                            <td class="acoes-tabela">
+
+                                <a
+                                    href="{{ url_for('detalhes_manifestacao', id=manifestacao.id) }}">
+
+                                    Ver
+
+                                </a>
+
+
+                                <a
+                                    href="{{ url_for('editar_manifestacao', id=manifestacao.id) }}">
+
+                                    Editar
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    {% else %}
+
+                        <tr>
+
+                            <td colspan="7">
+
+                                Nenhuma manifestação registrada.
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
