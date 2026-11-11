@@ -1,0 +1,1704 @@
+/* =========================================================
+   VOZ CIDADÃ
+   Identidade visual: Dark Elegant + Community
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+
+/* =========================================================
+   01. VARIÁVEIS E IDENTIDADE VISUAL
+   ========================================================= */
+
+:root {
+    --fundo: #10231F;
+    --fundo-secundario: #142C25;
+    --superficie: #193B32;
+    --superficie-hover: #21483B;
+
+    --verde-principal: #A8B99F;
+    --verde-escuro: #245747;
+    --verde-hover: #326C56;
+    --verde-claro: #D4E0D0;
+
+    --areia: #E8DCC5;
+    --coral: #E98268;
+
+    --branco: #F7F5EF;
+    --texto: #F1F1E9;
+    --texto-secundario: #A8B9AE;
+    --texto-suave: #7F978A;
+
+    --borda: rgba(210, 226, 212, 0.12);
+    --borda-forte: rgba(210, 226, 212, 0.22);
+
+    --vermelho: #E98268;
+
+    --sombra: 0 15px 40px rgba(0, 0, 0, 0.20);
+    --sombra-forte: 0 25px 60px rgba(0, 0, 0, 0.30);
+
+    --raio: 18px;
+    --transicao: all 0.3s ease;
+}
+
+
+/* =========================================================
+   02. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scrollbar-color: #426B58 #10231F;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--fundo);
+    color: var(--texto);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+::selection {
+    background: var(--verde-principal);
+    color: var(--fundo);
+}
+
+
+/* =========================================================
+   03. CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(1160px, 90%);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   04. CABEÇALHO E NAVEGAÇÃO
+   ========================================================= */
+
+.cabecalho {
+    background: rgba(16, 35, 31, 0.94);
+    border-bottom: 1px solid var(--borda);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.nav-container {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;
+    color: var(--texto);
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.logo strong {
+    color: var(--verde-principal);
+}
+
+.logo-icone {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        145deg,
+        #A8B99F,
+        #6F9278
+    );
+
+    color: #10231F;
+
+    border-radius: 14px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+
+    box-shadow: 0 5px 18px rgba(168, 185, 159, 0.15);
+
+    transition: var(--transicao);
+}
+
+.logo:hover .logo-icone {
+    transform: rotate(-5deg) scale(1.05);
+}
+
+
+/* MENU */
+
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu a {
+    position: relative;
+
+    text-decoration: none;
+    color: var(--texto-secundario);
+
+    font-size: 0.94rem;
+    font-weight: 600;
+
+    transition: var(--transicao);
+}
+
+.menu a:not(.botao-menu)::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--verde-principal);
+    transition: var(--transicao);
+}
+
+.menu a:not(.botao-menu):hover::after {
+    width: 100%;
+}
+
+.menu a:hover {
+    color: var(--verde-principal);
+}
+
+.usuario-logado {
+    color: var(--areia);
+    font-size: 0.84rem;
+    font-weight: 500;
+}
+
+.botao-menu {
+    background: var(--verde-principal);
+    color: var(--fundo) !important;
+
+    padding: 11px 22px;
+    border-radius: 10px;
+
+    font-weight: 700 !important;
+
+    transition: var(--transicao);
+}
+
+.botao-menu:hover {
+    background: var(--verde-claro);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(168, 185, 159, 0.15);
+}
+
+
+/* =========================================================
+   05. MENSAGENS DO SISTEMA
+   ========================================================= */
+
+.mensagem {
+    margin-top: 22px;
+    padding: 15px 20px;
+
+    border-radius: 12px;
+    font-size: 0.9rem;
+
+    animation: aparecer 0.35s ease;
+}
+
+.mensagem-sucesso {
+    background: rgba(74, 160, 112, 0.15);
+    color: #A8DDB8;
+    border: 1px solid rgba(112, 205, 143, 0.25);
+}
+
+.mensagem-erro {
+    background: rgba(233, 130, 104, 0.12);
+    color: #F2A18E;
+    border: 1px solid rgba(233, 130, 104, 0.25);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   06. BOTÕES
+   ========================================================= */
+
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    cursor: pointer;
+    font-family: inherit;
+
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    padding: 14px 23px;
+    border-radius: 11px;
+
+    transition: var(--transicao);
+}
+
+.botao-principal {
+    background: var(--verde-principal);
+    color: var(--fundo);
+}
+
+.botao-principal:hover {
+    background: var(--verde-claro);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(168, 185, 159, 0.15);
+}
+
+.botao-secundario {
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--areia);
+    border-color: var(--borda-forte);
+}
+
+.botao-secundario:hover {
+    background: var(--superficie);
+    border-color: var(--verde-principal);
+    color: var(--verde-principal);
+}
+
+.botao-perigo {
+    background: var(--coral);
+    color: #241A17;
+}
+
+.botao-perigo:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.botao-branco {
+    background: var(--areia);
+    color: var(--fundo);
+}
+
+.botao-branco:hover {
+    background: var(--branco);
+    transform: translateY(-3px);
+}
+
+.botao-largo {
+    width: 100%;
+}
+
+.botao-pequeno {
+    padding: 9px 14px;
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   07. HERO - PÁGINA INICIAL
+   ========================================================= */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 115px 0 125px;
+
+    background:
+        radial-gradient(
+            circle at 85% 35%,
+            rgba(66, 119, 88, 0.20),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(168, 185, 159, 0.07),
+            transparent 30%
+        ),
+        var(--fundo);
+}
+
+.hero::before {
+    content: '';
+
+    position: absolute;
+    top: 50px;
+    right: -120px;
+
+    width: 380px;
+    height: 380px;
+
+    border: 1px solid rgba(168, 185, 159, 0.08);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+
+    align-items: center;
+    gap: 85px;
+}
+
+.hero-texto {
+    position: relative;
+    z-index: 1;
+}
+
+.selo {
+    display: inline-block;
+
+    margin-bottom: 25px;
+    padding: 9px 15px;
+
+    background: rgba(168, 185, 159, 0.12);
+    border: 1px solid rgba(168, 185, 159, 0.17);
+
+    color: var(--verde-principal);
+
+    border-radius: 30px;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.hero h1 {
+    max-width: 760px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.7rem);
+
+    line-height: 1.12;
+    letter-spacing: -3px;
+
+    margin-bottom: 27px;
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--verde-principal);
+}
+
+.hero p {
+    max-width: 640px;
+
+    color: var(--texto-secundario);
+    font-size: 1.06rem;
+
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+.hero-botoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+
+/* CARD PRINCIPAL */
+
+.hero-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 38px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #245747,
+            #193B32
+        );
+
+    color: var(--branco);
+
+    border: 1px solid rgba(168, 185, 159, 0.15);
+    border-radius: 24px;
+
+    box-shadow: var(--sombra-forte);
+
+    min-height: 340px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    transition: var(--transicao);
+}
+
+.hero-card::after {
+    content: '';
+
+    position: absolute;
+    right: -55px;
+    bottom: -90px;
+
+    width: 230px;
+    height: 230px;
+
+    border: 1px solid rgba(232, 220, 197, 0.12);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 25px rgba(232, 220, 197, 0.025),
+        0 0 0 50px rgba(232, 220, 197, 0.02);
+
+    pointer-events: none;
+}
+
+.hero-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+}
+
+.hero-card-topo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 45px;
+
+    font-size: 0.85rem;
+    color: var(--verde-claro);
+}
+
+.status-online {
+    width: 9px;
+    height: 9px;
+
+    background: #A8DDB8;
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px rgba(168, 221, 184, 0.5);
+}
+
+.hero-card h2 {
+    max-width: 350px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.9rem;
+
+    line-height: 1.3;
+    margin-bottom: 18px;
+}
+
+.hero-card p {
+    position: relative;
+    z-index: 1;
+
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.91rem;
+
+    line-height: 1.8;
+    margin: 0;
+}
+
+
+/* =========================================================
+   08. ESTATÍSTICAS
+   ========================================================= */
+
+.estatisticas {
+    position: relative;
+
+    padding: 38px 0;
+
+    background: var(--superficie);
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+}
+
+.estatisticas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.card-estatistica {
+    color: var(--branco);
+
+    padding: 15px 20px;
+    text-align: center;
+
+    border-right: 1px solid var(--borda);
+}
+
+.card-estatistica:last-child {
+    border-right: none;
+}
+
+.numero {
+    display: block;
+
+    color: var(--verde-principal);
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.1rem;
+    font-weight: 800;
+
+    line-height: 1.3;
+}
+
+.descricao {
+    color: var(--texto-secundario);
+    font-size: 0.83rem;
+}
+
+
+/* =========================================================
+   09. SEÇÕES
+   ========================================================= */
+
+.secao {
+    padding: 105px 0;
+    background: var(--fundo);
+}
+
+.secao-destaque {
+    background: var(--fundo-secundario);
+    border-top: 1px solid var(--borda);
+    border-bottom: 1px solid var(--borda);
+}
+
+.titulo-secao {
+    max-width: 700px;
+    margin-bottom: 55px;
+}
+
+.titulo-secao > span,
+.pagina-cabecalho > div > span,
+.formulario-cabecalho > span {
+    color: var(--verde-principal);
+
+    font-size: 0.74rem;
+    font-weight: 800;
+
+    letter-spacing: 1.8px;
+}
+
+.titulo-secao h2 {
+    font-family: 'Manrope', sans-serif;
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.3;
+
+    margin: 13px 0 16px;
+    letter-spacing: -1px;
+
+    color: var(--branco);
+}
+
+.titulo-secao p {
+    color: var(--texto-secundario);
+    font-size: 0.96rem;
+}
+
+
+/* =========================================================
+   10. PASSOS
+   ========================================================= */
+
+.passos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.passo {
+    position: relative;
+
+    background: var(--superficie);
+    padding: 34px;
+
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+
+    transition: var(--transicao);
+}
+
+.passo:hover {
+    transform: translateY(-7px);
+    background: var(--superficie-hover);
+
+    border-color: rgba(168, 185, 159, 0.35);
+    box-shadow: var(--sombra);
+}
+
+.passo-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background: rgba(168, 185, 159, 0.12);
+    color: var(--verde-principal);
+
+    border-radius: 14px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+
+    margin-bottom: 28px;
+}
+
+.passo h3 {
+    color: var(--branco);
+    font-size: 1.12rem;
+    margin-bottom: 12px;
+}
+
+.passo p {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   11. CATEGORIAS
+   ========================================================= */
+
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.categoria-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 29px;
+
+    background: var(--superficie);
+
+    border: 1px solid var(--borda);
+    border-radius: 15px;
+
+    transition: var(--transicao);
+}
+
+.categoria-card::before {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 3px;
+    height: 0;
+
+    background: var(--verde-principal);
+    transition: var(--transicao);
+}
+
+.categoria-card:hover {
+    background: var(--superficie-hover);
+    border-color: var(--borda-forte);
+
+    transform: translateY(-4px);
+}
+
+.categoria-card:hover::before {
+    height: 100%;
+}
+
+.categoria-card h3 {
+    color: var(--areia);
+    margin-bottom: 9px;
+    font-size: 1rem;
+}
+
+.categoria-card p {
+    color: var(--texto-secundario);
+    font-size: 0.86rem;
+}
+
+
+/* =========================================================
+   12. CHAMADA FINAL
+   ========================================================= */
+
+.chamada-final {
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(168, 185, 159, 0.16),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #193B32,
+            #245747
+        );
+
+    color: var(--branco);
+
+    text-align: center;
+    padding: 105px 20px;
+
+    border-top: 1px solid var(--borda);
+}
+
+.chamada-final h2 {
+    max-width: 800px;
+
+    margin: 0 auto 20px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.7rem);
+
+    line-height: 1.3;
+    letter-spacing: -1px;
+}
+
+.chamada-final p {
+    max-width: 650px;
+
+    margin: 0 auto 32px;
+
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.96rem;
+}
+
+
+/* =========================================================
+   13. PÁGINAS INTERNAS
+   ========================================================= */
+
+.pagina {
+    min-height: 70vh;
+    padding: 75px 0 100px;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(66, 119, 88, 0.10),
+            transparent 35%
+        ),
+        var(--fundo);
+}
+
+.pagina-cabecalho {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+
+    gap: 30px;
+    margin-bottom: 45px;
+}
+
+.pagina-cabecalho h1 {
+    margin: 10px 0;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 2.5rem;
+
+    letter-spacing: -1.3px;
+}
+
+.pagina-cabecalho p {
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   14. FORMULÁRIOS
+   ========================================================= */
+
+.pagina-formulario {
+    min-height: 78vh;
+    padding: 75px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(66, 119, 88, 0.13),
+            transparent 45%
+        ),
+        var(--fundo);
+}
+
+.formulario-container {
+    width: 100%;
+    max-width: 520px;
+
+    background: var(--superficie);
+
+    padding: 45px;
+
+    border: 1px solid var(--borda);
+    border-radius: 22px;
+
+    box-shadow: var(--sombra);
+}
+
+.formulario-grande {
+    max-width: 760px;
+}
+
+.formulario-cabecalho {
+    margin-bottom: 32px;
+}
+
+.formulario-cabecalho h1 {
+    margin: 12px 0;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+
+    color: var(--branco);
+    letter-spacing: -1px;
+}
+
+.formulario-cabecalho p {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 21px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.campo label {
+    color: var(--areia);
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    background: #122C24;
+    color: var(--branco);
+
+    border: 1px solid var(--borda-forte);
+    border-radius: 11px;
+
+    font-family: inherit;
+    font-size: 0.9rem;
+
+    outline: none;
+    transition: var(--transicao);
+}
+
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: var(--texto-suave);
+}
+
+.campo select option {
+    background: var(--superficie);
+    color: var(--branco);
+}
+
+.campo textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    border-color: var(--verde-principal);
+
+    box-shadow:
+        0 0 0 3px rgba(168, 185, 159, 0.12);
+
+    background: #16342A;
+}
+
+.texto-formulario {
+    text-align: center;
+    margin-top: 25px;
+
+    font-size: 0.86rem;
+    color: var(--texto-secundario);
+}
+
+.texto-formulario a {
+    color: var(--verde-principal);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.texto-formulario a:hover {
+    color: var(--areia);
+}
+
+
+/* =========================================================
+   15. FILTROS
+   ========================================================= */
+
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    align-items: end;
+    gap: 17px;
+
+    padding: 27px;
+
+    background: var(--superficie);
+
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+
+    margin-bottom: 40px;
+}
+
+
+/* =========================================================
+   16. MANIFESTAÇÕES
+   ========================================================= */
+
+.manifestacoes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 23px;
+}
+
+.manifestacao-card {
+    display: flex;
+    flex-direction: column;
+
+    background: var(--superficie);
+    padding: 26px;
+
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+
+    transition: var(--transicao);
+}
+
+.manifestacao-card:hover {
+    transform: translateY(-6px);
+
+    background: var(--superficie-hover);
+    border-color: var(--borda-forte);
+
+    box-shadow: var(--sombra);
+}
+
+.manifestacao-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-bottom: 23px;
+}
+
+.tag-categoria {
+    background: rgba(168, 185, 159, 0.13);
+    color: var(--verde-principal);
+
+    padding: 7px 12px;
+    border-radius: 20px;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.status {
+    padding: 7px 11px;
+    border-radius: 20px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.status-pendente {
+    background: rgba(233, 190, 110, 0.14);
+    color: #EBCB8D;
+}
+
+.status-em-análise {
+    background: rgba(116, 168, 213, 0.15);
+    color: #9BC8EC;
+}
+
+.status-em-andamento {
+    background: rgba(168, 185, 159, 0.15);
+    color: #B8D1B2;
+}
+
+.status-resolvido {
+    background: rgba(99, 190, 137, 0.15);
+    color: #9AD7AF;
+}
+
+.manifestacao-card h2 {
+    color: var(--branco);
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.13rem;
+
+    line-height: 1.5;
+    margin-bottom: 13px;
+}
+
+.manifestacao-descricao {
+    color: var(--texto-secundario);
+    font-size: 0.87rem;
+
+    line-height: 1.8;
+    margin-bottom: 22px;
+
+    flex-grow: 1;
+}
+
+.manifestacao-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    padding-top: 17px;
+
+    border-top: 1px solid var(--borda);
+
+    color: var(--texto-suave);
+    font-size: 0.77rem;
+}
+
+.link-manifestacao {
+    display: inline-block;
+    margin-top: 20px;
+
+    color: var(--verde-principal);
+    text-decoration: none;
+
+    font-size: 0.87rem;
+    font-weight: 700;
+
+    transition: var(--transicao);
+}
+
+.link-manifestacao:hover {
+    color: var(--areia);
+    transform: translateX(4px);
+}
+
+.sem-resultados {
+    grid-column: 1 / -1;
+
+    text-align: center;
+    padding: 75px 20px;
+
+    background: var(--superficie);
+
+    border-radius: var(--raio);
+    border: 1px solid var(--borda);
+
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   17. DETALHES DA MANIFESTAÇÃO
+   ========================================================= */
+
+.detalhes-manifestacao {
+    max-width: 900px;
+    margin: 0 auto;
+
+    background: var(--superficie);
+    padding: 45px;
+
+    border-radius: 22px;
+    border: 1px solid var(--borda);
+
+    box-shadow: var(--sombra);
+}
+
+.voltar {
+    display: inline-block;
+    margin-bottom: 35px;
+
+    color: var(--verde-principal);
+    text-decoration: none;
+
+    font-size: 0.88rem;
+    font-weight: 700;
+
+    transition: var(--transicao);
+}
+
+.voltar:hover {
+    color: var(--areia);
+    transform: translateX(-4px);
+}
+
+.detalhes-topo {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+    padding-bottom: 30px;
+
+    border-bottom: 1px solid var(--borda);
+}
+
+.detalhes-topo h1 {
+    margin-top: 15px;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+
+    letter-spacing: -1px;
+}
+
+.detalhes-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    padding: 27px 0;
+
+    color: var(--texto-secundario);
+    font-size: 0.86rem;
+}
+
+.detalhes-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.detalhes-descricao {
+    padding: 30px 0;
+    border-top: 1px solid var(--borda);
+}
+
+.detalhes-descricao h2 {
+    color: var(--areia);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.detalhes-descricao p {
+    color: var(--texto-secundario);
+    line-height: 1.9;
+    white-space: pre-line;
+}
+
+.acoes {
+    display: flex;
+    gap: 13px;
+    margin-top: 25px;
+}
+
+.acoes form {
+    margin: 0;
+}
+
+
+/* =========================================================
+   18. ADMINISTRAÇÃO
+   ========================================================= */
+
+.admin-estatisticas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+    margin-bottom: 38px;
+}
+
+.admin-card {
+    background: var(--superficie);
+    padding: 27px;
+
+    border: 1px solid var(--borda);
+    border-radius: 16px;
+
+    transition: var(--transicao);
+}
+
+.admin-card:hover {
+    border-color: var(--borda-forte);
+    transform: translateY(-4px);
+}
+
+.admin-card span {
+    display: block;
+
+    color: var(--texto-secundario);
+    font-size: 0.82rem;
+
+    margin-bottom: 10px;
+}
+
+.admin-card strong {
+    color: var(--verde-principal);
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 2rem;
+}
+
+
+/* =========================================================
+   19. TABELAS
+   ========================================================= */
+
+.tabela-container {
+    width: 100%;
+    overflow-x: auto;
+
+    background: var(--superficie);
+
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+}
+
+.tabela {
+    width: 100%;
+    min-width: 900px;
+
+    border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+    padding: 17px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--borda);
+
+    color: var(--texto-secundario);
+    font-size: 0.82rem;
+}
+
+.tabela th {
+    background: #21483B;
+
+    color: var(--verde-principal);
+
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.tabela tbody tr {
+    transition: var(--transicao);
+}
+
+.tabela tbody tr:hover {
+    background: rgba(168, 185, 159, 0.06);
+}
+
+.form-status {
+    display: flex;
+    gap: 8px;
+}
+
+.form-status select {
+    padding: 9px;
+
+    background: #122C24;
+    color: var(--branco);
+
+    border: 1px solid var(--borda-forte);
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 0.76rem;
+}
+
+.acoes-tabela {
+    display: flex;
+    gap: 14px;
+}
+
+.acoes-tabela a {
+    color: var(--verde-principal);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.82rem;
+}
+
+.acoes-tabela a:hover {
+    color: var(--areia);
+}
+
+
+/* =========================================================
+   20. RODAPÉ
+   ========================================================= */
+
+.rodape {
+    background: #0B1B17;
+    color: var(--branco);
+
+    padding: 55px 0;
+    margin-top: 60px;
+
+    border-top: 1px solid var(--borda);
+}
+
+.rodape .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 35px;
+}
+
+.rodape h3 {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.2rem;
+
+    color: var(--verde-principal);
+    margin-bottom: 12px;
+}
+
+.rodape p {
+    color: var(--texto-suave);
+    font-size: 0.83rem;
+    line-height: 1.8;
+}
+
+.rodape-info {
+    text-align: right;
+}
+
+
+/* =========================================================
+   21. LINK ATIVO
+   ========================================================= */
+
+.menu a.menu-ativo:not(.botao-menu) {
+    color: var(--verde-principal);
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   22. CONTADOR DE CARACTERES
+   ========================================================= */
+
+.contador-caracteres {
+    display: block;
+    text-align: right;
+
+    color: var(--texto-suave);
+    font-size: 0.78rem;
+}
+
+
+/* =========================================================
+   23. RESPONSIVIDADE - TABLETS
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .hero-card {
+        min-height: 280px;
+    }
+
+    .estatisticas-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-estatistica:nth-child(2) {
+        border-right: none;
+    }
+
+    .manifestacoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .filtros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .admin-estatisticas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* =========================================================
+   24. RESPONSIVIDADE - CELULARES
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .nav-container {
+        flex-direction: column;
+        padding: 18px 0;
+        gap: 20px;
+    }
+
+    .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .usuario-logado {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 75px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.8rem;
+        letter-spacing: -1.5px;
+    }
+
+    .passos-grid,
+    .categorias-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .secao {
+        padding: 75px 0;
+    }
+
+    .pagina-cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .manifestacoes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rodape .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .rodape-info {
+        text-align: left;
+    }
+
+    .chamada-final {
+        padding: 75px 20px;
+    }
+
+    .detalhes-manifestacao {
+        padding: 30px;
+    }
+}
+
+
+/* =========================================================
+   25. RESPONSIVIDADE - TELAS PEQUENAS
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .container {
+        width: 92%;
+    }
+
+    .menu {
+        gap: 12px;
+    }
+
+    .menu a {
+        font-size: 0.83rem;
+    }
+
+    .hero h1 {
+        font-size: 2.35rem;
+    }
+
+    .hero-botoes {
+        flex-direction: column;
+    }
+
+    .hero-botoes .botao {
+        width: 100%;
+    }
+
+    .hero-card {
+        padding: 28px;
+    }
+
+    .hero-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .estatisticas-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-estatistica {
+        padding: 15px 8px;
+    }
+
+    .numero {
+        font-size: 1.7rem;
+    }
+
+    .descricao {
+        font-size: 0.72rem;
+    }
+
+    .filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-estatisticas {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .formulario-container {
+        padding: 30px 22px;
+    }
+
+    .detalhes-manifestacao {
+        padding: 25px 20px;
+    }
+
+    .detalhes-topo {
+        flex-direction: column;
+    }
+
+    .detalhes-topo h1 {
+        font-size: 1.6rem;
+    }
+
+    .acoes {
+        flex-direction: column;
+    }
+
+    .acoes .botao,
+    .acoes form,
+    .acoes form button {
+        width: 100%;
+    }
+
+    .pagina-cabecalho h1 {
+        font-size: 2rem;
+    }
+
+}
+
+
+/* =========================================================
+   26. ACESSIBILIDADE E INTERAÇÕES
+   ========================================================= */
+
+:focus-visible {
+    outline: 2px solid var(--verde-principal);
+    outline-offset: 4px;
+}
+
+button:disabled,
+.botao:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
